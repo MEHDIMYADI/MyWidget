@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layoutDirection="ltr"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_margin="@dimen/margin"
+    android:weightSum="3">
+
+    <LinearLayout
+        android:id="@+id/onYAstronomic"
+        android:orientation="horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_margin="5dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/myBackground"
+            android:gravity="center"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:visibility="gone"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="@dimen/margin"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableTop="@drawable/ic_next"
+                android:onClick="nextDay"
+                android:id="@+id/nextDay"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/volume_panel"/>
+
+            <TextView
+                android:id="@+id/persianCalendar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:layout_margin="@dimen/margin"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                app:autoSizeTextType="uniform"
+                android:textStyle="bold" />
+
+            <Button
+                android:visibility="gone"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="@dimen/margin"
+                android:background="?android:attr/selectableItemBackground"
+                android:drawableTop="@drawable/ic_preview"
+                android:onClick="previewDay"
+                android:id="@+id/previewDay"
+                android:layout_gravity="center_vertical"
+                android:contentDescription="@string/mute_media"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:id="@+id/onMAstronomic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2.5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:layout_weight="1.0">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/myBackground"
+                android:gravity="center"
+                tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/persianMonthName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                app:autoSizeTextType="uniform"
+                android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/myBackground"
+            android:layout_marginStart="2.5dp"
+            android:gravity="center"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@+id/persianWeekName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                app:autoSizeTextType="uniform"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@color/myBackground">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:fadeScrollbars="false"
+            app:fastScrollEnabled="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/muteRing"
+            android:onClick="onRingMutePanel"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/volume_panel"/>
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/muteVol"
+            android:onClick="onMusicMuteVol"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/mute_media"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_volume_decrease"
+            android:onClick="onMusicVolDec"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/decrease_volume"/>
+
+        <TextView
+            android:id="@+id/volPercent"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            app:autoSizeTextType="uniform"
+            android:gravity="center" />
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_volume_increase"
+            android:onClick="onMusicVolInc"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/increase_volume"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_vpn"
+            android:onClick="onVpnShortcut"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/vpn_shortcut"/>
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_data_usage"
+            android:onClick="onDataUsage"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/data_usage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="@dimen/margin"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:id="@+id/settings"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_settings"
+            android:onClick="onSettings"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/data_usage" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="@dimen/margin"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/exit"
+            android:layout_margin="@dimen/margin"
+            android:background="?android:attr/selectableItemBackground"
+            android:drawableTop="@drawable/ic_cancel"
+            android:onClick="onClose"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/data_usage" />
+    </LinearLayout>
+
+</LinearLayout>

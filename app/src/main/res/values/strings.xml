@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">ویجت من</string>
+    <string name="ring_explanation">قابلیت لطفا مزاحم نشوید (Do Not Disturb) را فعال کنید\nبه طوری که ویجت من می تواند نحوه ی هشدار زنگ شما را به سرعت تغییر دهد،\nتصویر زیر چگونگی انجام این فرایند را نمایش می دهد:</string>
+    <string name="pop_explanation">اوه، دوباره متاسفم…\nدسترسی نمایش در همه برنامه ها (Display over all apps) لازم است تا ویجت من کاملا قابل استفاده شود.\nویجت من را از طریق نوار وضعیت یا همچنین از طریق نمایه همیار می توانید اجرا نمایید.\nتصویر زیر چگونگی انجام این فرایند را نمایش می دهد:</string>
+    <string name="permission_tap_to_grant">روی صفحه ضربه بزنید و اجازه (Do Not Disturb) را بدهید.</string>
+    <string name="pop_tap_to_grant">روی صفحه ضربه بزنید و اجازه نمایش در همه برنامه ها (Display over all apps) را بدهید.</string>
+    <string name="grant_permission">قابلیت لطفا مزاحم نشوید (Do Not Disturb) را فعال کنید</string>
+    <string name="pop_explanation_xiaomi">اجازه نمایش پنجره شناور و نمایش پنجره ی بازشو هنگام اجرا از پس زمینه را فعال کنید.\nبدیهی است بدون فعال سازی این موارد برنامه اجرا نخواهد شد.</string>
+    <string name="pop_tap_to_grant_xiaomi">لطفا روی صفحه ضربه بزنید و موارد درخواست شده را فعال نمایید</string>
+    <string name="volume_panel">پنل صدا</string>
+    <string name="mute_media">قطع صدا</string>
+    <string name="increase_volume">افزایش صدا</string>
+    <string name="decrease_volume">کاهش صدا</string>
+    <string name="vpn_shortcut">میانبر VPN</string>
+    <string name="data_usage">استفاده داده ها</string>
+    <string name="not_compatible_device">متأسفیم، این برنامه با دستگاه شما سازگار نیست</string>
+    <string name="about">درباره</string>
+    <string name="dev">MEHDIMYADI</string>
+    <string name="my_web_site">وب سایت من: www.dimyadi.ir</string>
+    <string name="github">گیت هاب من:www.github.com/MEHDIMYADI</string>
+    <string name="note">نکات</string>
+    <string name="why_permission_one">
+        ۱. برای تغییر وضعیت صدا و زنگ، برنامه به مجوزهای (Do Not Disturb) نیاز دارد و درخواست می شود.</string>
+    <string name="why_permission_two">
+        ۲. برای استفاده از میانبر کاشی یا نمایه همیار برنامه نیاز به مجوز نمایش در دیگر برنامه ها (Display over all apps) دارد.\nلطفا جهت استفاده از میانبر کاشی، کاشی ها را در نوار ابزار بالا ویرایش کنید و میانبر ویجت من را افزوده و مرتب کنید.</string>
+    <string name="on">روشن</string>
+    <string name="enable_assistive_touch">فعال سازی نمایه همیار</string>
+
+    <string name="no_event">مناسبت یا رویدادی برای این روز یافت نشد.</string>
+    <string name="empty" translatable="false"> </string>
+    <string name="capricorn_emoji" translatable="false">♑</string>
+    <string name="aquarius_emoji" translatable="false">♒</string>
+    <string name="pisces_emoji" translatable="false">♓</string>
+    <string name="aries_emoji" translatable="false">♈</string>
+    <string name="taurus_emoji" translatable="false">♉</string>
+    <string name="gemini_emoji" translatable="false">♊</string>
+    <string name="cancer_emoji" translatable="false">♋</string>
+    <string name="leo_emoji" translatable="false">♌</string>
+    <string name="virgo_emoji" translatable="false">♍</string>
+    <string name="libra_emoji" translatable="false">♎</string>
+    <string name="scorpio_emoji" translatable="false">♏</string>
+    <string name="sagittarius_emoji" translatable="false">♐</string>
+    <string name="not_set_time" translatable="false">--:--</string>
+    <string name="year">سال</string>
+    <string name="year1">میمون</string>
+    <string name="year2">خروس</string>
+    <string name="year3">سگ</string>
+    <string name="year4">خوک</string>
+    <string name="year5">موش</string>
+    <string name="year6">گاو</string>
+    <string name="year7">پلنگ</string>
+    <string name="year8">خرگوش</string>
+    <string name="year9">اژدها</string>
+    <string name="year10">مار</string>
+    <string name="year11">اسب</string>
+    <string name="year12">گوسفند</string>
+    <string name="zodiac">برج فلکی</string>
+    <string name="capricorn">جَدْی (بزغاله)</string>
+    <string name="aquarius">دلو (آبریز)</string>
+    <string name="pisces">حوت (ماهی)</string>
+    <string name="aries">حَمَل (بره)</string>
+    <string name="taurus">ثَور (گاو)</string>
+    <string name="gemini">جَوزا (دوپیکر)</string>
+    <string name="cancer">سَرَطان (خرچنگ️)</string>
+    <string name="leo">اسد (شیر)</string>
+    <string name="virgo">سُنبُله (خوشه)</string>
+    <string name="libra">میزان (ترازو)</string>
+    <string name="scorpio">عقرب (کژدم)</string>
+    <string name="sagittarius">سفقَوس (کمان)</string>
+    <string name="off">خاموش</string>
+    <string name="per_info_one">۱ از ۲ مجوز اعطا شده است</string>
+    <string name="per_info_two">۰ از ۲ مجوز اعطا شده است</string>
+
+</resources>
