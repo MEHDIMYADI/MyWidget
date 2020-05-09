@@ -1,7 +1,8 @@
 package ir.dimyadi.mywidget.monthweekname
 
-import ir.dimyadi.mywidget.calendar.CivilDate
-import ir.dimyadi.mywidget.calendar.PersianDate
+import io.github.persiancalendar.calendar.CivilDate
+import io.github.persiancalendar.calendar.PersianDate
+import ir.dimyadi.mywidget.util.toCivilDate
 import java.util.*
 
 /**
@@ -29,7 +30,7 @@ class PersianMonthWeekN {
         get() = shWeekName
 
     init {
-        shMonthName = monthNamesList[PersianDate(CivilDate(Calendar.getInstance())).month]
+        shMonthName = monthNamesList[PersianDate(Calendar.getInstance().toCivilDate()).month]
         shWeekName = weekDaysList[GregorianCalendar()[Calendar.DAY_OF_WEEK]]
     }
 }

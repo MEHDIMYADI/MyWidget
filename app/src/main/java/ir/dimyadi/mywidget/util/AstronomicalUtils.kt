@@ -1,4 +1,4 @@
-package ir.dimyadi.mywidget.calendar
+package ir.dimyadi.mywidget.util
 
 import androidx.annotation.StringRes
 import ir.dimyadi.mywidget.R

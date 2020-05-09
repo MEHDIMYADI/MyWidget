@@ -5,10 +5,12 @@ import android.app.job.JobScheduler
 import android.content.*
 import android.os.Build
 import android.util.Log
+import io.github.persiancalendar.calendar.CivilDate
 import ir.dimyadi.mywidget.service.MyAssistiveJobService
 import ir.dimyadi.mywidget.service.MyAssistiveTouchService
 import ir.dimyadi.mywidget.util.StringUtil.NAME
 import ir.dimyadi.mywidget.util.StringUtil.PREF_NAME
+import java.util.*
 
 /**
  * @author MEHDIMYADI
@@ -60,3 +62,9 @@ object Util {
         }
     }
 }
+
+fun Calendar.toCivilDate() = CivilDate(
+    get(Calendar.YEAR),
+    get(Calendar.MONTH) + 1,
+    get(Calendar.DAY_OF_MONTH)
+)

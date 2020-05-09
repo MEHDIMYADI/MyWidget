@@ -24,14 +24,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.R.id.snackbar_text
 import com.google.android.material.snackbar.Snackbar
-import ir.dimyadi.mywidget.calendar.*
+import io.github.persiancalendar.calendar.CivilDate
+import io.github.persiancalendar.calendar.IslamicDate
+import io.github.persiancalendar.calendar.PersianDate
 import ir.dimyadi.mywidget.events.EventsAdapter
 import ir.dimyadi.mywidget.events.SimpleDividerItemDecoration
 import ir.dimyadi.mywidget.monthweekname.EnMonthWeekN
 import ir.dimyadi.mywidget.monthweekname.IslamicMonthWeekN
 import ir.dimyadi.mywidget.monthweekname.PersianMonthWeekN
-import ir.dimyadi.mywidget.util.RingVolumeSwitchWidgetPreferences
-import ir.dimyadi.mywidget.util.VolumeSwitchWidgetPreferences
+import ir.dimyadi.mywidget.util.*
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
@@ -50,7 +51,7 @@ class DialogActivity : AppCompatActivity() {
         PersianMonthWeekN()
     private val hCalendar = IslamicMonthWeekN()
 
-    private val civilDate = CivilDate(Calendar.getInstance())
+    private val civilDate = Calendar.getInstance().toCivilDate()
     private var civilYear = civilDate.year
     private var civilMonth = civilDate.month
     private var civilDay = civilDate.dayOfMonth
