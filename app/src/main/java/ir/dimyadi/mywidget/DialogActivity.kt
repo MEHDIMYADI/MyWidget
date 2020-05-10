@@ -486,7 +486,7 @@ class DialogActivity : AppCompatActivity() {
             val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
             val currentVolumePercentage: Int = 100 * currentVolume / maxVolume
 
-            tVolPercent.text = FaNumber.convert("%$currentVolumePercentage")
+            tVolPercent.text = FaNumber.convert("$currentVolumePercentage٪")
             TextViewCompat.setAutoSizeTextTypeWithDefaults(
                 tVolPercent,
                 TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
@@ -511,25 +511,15 @@ class DialogActivity : AppCompatActivity() {
     }
 
     object FaNumber {
-        fun convert(faNumbers: String): String {
-            var numbers = faNumbers
-            val mChars =
-                arrayOf(
-                    arrayOf("0", "۰"),
-                    arrayOf("1", "۱"),
-                    arrayOf("2", "۲"),
-                    arrayOf("3", "۳"),
-                    arrayOf("4", "۴"),
-                    arrayOf("5", "۵"),
-                    arrayOf("6", "۶"),
-                    arrayOf("7", "۷"),
-                    arrayOf("8", "۸"),
-                    arrayOf("9", "۹")
-                )
-            for (num in mChars) {
-                numbers = numbers.replace(num[0], num[1])
+        private const val AR_DIGITS = "0123456789"
+        private const val FA_DIGITS = "۰۱۲۳۴۵۶۷۸۹"
+
+        fun convert(number: String): String {
+            var result = number
+            AR_DIGITS.zip(FA_DIGITS).forEach {
+                result = result.replace(it.first, it.second)
             }
-            return numbers
+            return result
         }
     }
 }
