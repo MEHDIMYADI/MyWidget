@@ -17,6 +17,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RawRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
@@ -200,7 +201,7 @@ class DialogActivity : AppCompatActivity() {
         recyclerView.layoutManager = linearLayoutManager
 
         try {
-            val obj = JSONObject(loadJSONFromAsset())
+            val obj = JSONObject(readRawResource(R.raw.events))
             val iranArray = obj.getJSONArray("Persian Calendar")
             for (i in 0 until iranArray.length()) {
                 val userDetail = iranArray.getJSONObject(i)
@@ -494,21 +495,8 @@ class DialogActivity : AppCompatActivity() {
         }, 100)
     }
 
-    private fun loadJSONFromAsset(): String {
-        val json: String
-        json = try {
-            val `is` = assets.open("events.json")
-            val size = `is`.available()
-            val buffer = ByteArray(size)
-            `is`.read(buffer)
-            `is`.close()
-            String(buffer, StandardCharsets.UTF_8)
-        } catch (ex: IOException) {
-            ex.printStackTrace()
-            return null.toString()
-        }
-        return json
-    }
+    private fun readRawResource(@RawRes res: Int) =
+        resources.openRawResource(res).use { String(it.readBytes()) }
 
     object FaNumber {
         private const val AR_DIGITS = "0123456789"
