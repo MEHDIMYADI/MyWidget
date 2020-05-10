@@ -8,8 +8,8 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import ir.dimyadi.mywidget.R
-import ir.dimyadi.mywidget.util.MyAssistiveTouch
 import ir.dimyadi.mywidget.util.Initializer
+import ir.dimyadi.mywidget.util.MyAssistiveTouch
 
 /**
  * @author MEHDIMYADI

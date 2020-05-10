@@ -130,18 +130,19 @@ open class SettingsActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     protected fun createRunningService() {
-        val sharedPreferences: SharedPreferences = getSharedPreferences(StringUtil.PREF_NAME, Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences(StringUtil.PREF_NAME, Context.MODE_PRIVATE)
         val getServiceState = isMyServiceRunning
         /*check the state of the service if running or not
          * */if (getServiceState) {
             stopService(Intent(this@SettingsActivity, MyAssistiveTouchService::class.java))
-            val editor = sharedPreferences!!.edit()
+            val editor = sharedPreferences.edit()
             editor.putString(NAME, "off")
             editor.apply()
             button!!.text = getString(R.string.off)
         } else {
             startService(Intent(this@SettingsActivity, MyAssistiveTouchService::class.java))
-            val editor = sharedPreferences!!.edit()
+            val editor = sharedPreferences.edit()
             editor.putString(NAME, "on")
             editor.apply()
             button!!.text = getString(R.string.on)
@@ -150,11 +151,11 @@ open class SettingsActivity : AppCompatActivity() {
 
     //fun howToUse(view: View?) {
 //        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        //Objects.requireNonNull(dialog.getWindow())
-        //        .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        //dialog.setContentView(R.layout.how_to_use_popup);
-        //dialog.setCanceledOnTouchOutside(false);
-        //dialog.show();
+    //Objects.requireNonNull(dialog.getWindow())
+    //        .setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    //dialog.setContentView(R.layout.how_to_use_popup);
+    //dialog.setCanceledOnTouchOutside(false);
+    //dialog.show();
     //}
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

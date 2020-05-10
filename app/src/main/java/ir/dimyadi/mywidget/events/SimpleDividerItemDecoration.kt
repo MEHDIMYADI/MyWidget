@@ -12,14 +12,12 @@ import ir.dimyadi.mywidget.R
  * @author MEHDIMYADI
  **/
 
-class SimpleDividerItemDecoration(context: Context?) :
-    ItemDecoration() {
-    private val mDivider: Drawable? = ContextCompat.getDrawable(context!!, R.drawable.recycler_view_divider)
-    override fun onDrawOver(
-        c: Canvas,
-        parent: RecyclerView,
-        state: RecyclerView.State
-    ) {
+class SimpleDividerItemDecoration(context: Context?) : ItemDecoration() {
+
+    private val mDivider: Drawable? =
+        ContextCompat.getDrawable(context!!, R.drawable.recycler_view_divider)
+
+    override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         val left = parent.paddingLeft
         val right = parent.width - parent.paddingRight
         val childCount = parent.adapter!!.itemCount
@@ -37,5 +35,4 @@ class SimpleDividerItemDecoration(context: Context?) :
             return
         }
     }
-
 }

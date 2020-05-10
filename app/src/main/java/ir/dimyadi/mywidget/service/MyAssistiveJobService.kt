@@ -11,6 +11,7 @@ import ir.dimyadi.mywidget.util.Util
  **/
 
 class MyAssistiveJobService : JobService() {
+
     /*on job started */
     override fun onStartJob(jobParameters: JobParameters): Boolean {
         //it has no use....check it once more

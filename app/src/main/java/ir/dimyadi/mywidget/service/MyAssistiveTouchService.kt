@@ -14,18 +14,18 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.Toast
 import ir.dimyadi.mywidget.R
+import ir.dimyadi.mywidget.util.Initializer
 import ir.dimyadi.mywidget.util.MyAssistiveTouch
 import ir.dimyadi.mywidget.util.StringUtil.NAME
 import ir.dimyadi.mywidget.util.StringUtil.PREF_NAME
-import ir.dimyadi.mywidget.util.Initializer
 import ir.dimyadi.mywidget.views.CustomViewAlternate
 
 /**
  * @author MEHDIMYADI
  **/
 
-class MyAssistiveTouchService : Service(), OnTouchListener,
-    View.OnClickListener {
+class MyAssistiveTouchService : Service(), OnTouchListener, View.OnClickListener {
+
     private var paramsImage: RelativeLayout.LayoutParams? = null
     private var relativeLayout: RelativeLayout? = null
     private var overplayedButton: ImageView? = null
@@ -89,8 +89,8 @@ class MyAssistiveTouchService : Service(), OnTouchListener,
         /*setting
          *Windowmanager params*/
 //        paramsInnitializer paramsInnitializer = new paramsInnitializer();
-        paramsInnitializer.setXCoordinate(0)
-        paramsInnitializer.setYCoordinate(150)
+        paramsInnitializer.xCoordinate = 0
+        paramsInnitializer.yCoordinate = 150
         val params = paramsInnitializer.wmInitializer(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT
@@ -228,8 +228,8 @@ class MyAssistiveTouchService : Service(), OnTouchListener,
         if (motionEvent.action == MotionEvent.ACTION_DOWN) {
 
             //initial position
-            initialX = paramsInnitializer.getXCoordinate()
-            initialY = paramsInnitializer.getYCoordinate()
+            initialX = paramsInnitializer.xCoordinate
+            initialY = paramsInnitializer.yCoordinate
 
             //touch locationn
             initialTouchX = motionEvent.rawX
@@ -238,10 +238,10 @@ class MyAssistiveTouchService : Service(), OnTouchListener,
         } else if (motionEvent.action == MotionEvent.ACTION_MOVE) {
 
             //calculate x and y coordinate of view
-            paramsInnitializer.setXCoordinate(initialX + (motionEvent.rawX - initialTouchX).toInt())
-            paramsInnitializer.setYCoordinate(initialY + (motionEvent.rawY - initialTouchY).toInt())
-            params.x = paramsInnitializer.getXCoordinate()
-            params.y = paramsInnitializer.getYCoordinate()
+            paramsInnitializer.xCoordinate = initialX + (motionEvent.rawX - initialTouchX).toInt()
+            paramsInnitializer.yCoordinate = initialY + (motionEvent.rawY - initialTouchY).toInt()
+            params.x = paramsInnitializer.xCoordinate
+            params.y = paramsInnitializer.yCoordinate
 
 
             //update the layout
@@ -253,7 +253,7 @@ class MyAssistiveTouchService : Service(), OnTouchListener,
             mWidth / 2
             //val nearestXWall = (if (params.x >= middle) mWidth else 0.toFloat()).toFloat()
             //params.x = nearestXWall.toInt()
-            paramsInnitializer.setXCoordinate(params.x)
+            paramsInnitializer.xCoordinate = params.x
             windowManager!!.updateViewLayout(relativeLayout, params)
             return moving
         }

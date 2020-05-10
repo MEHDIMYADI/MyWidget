@@ -7,8 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
@@ -25,7 +23,6 @@ import java.util.*
 
 open class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +32,6 @@ open class MainActivity : AppCompatActivity() {
 
         val checkIfrunningAfterBoot = checkIfrunningAfterBoot()
         val getServiceState = isMyServiceRunning()
-
 
         if (!isSystemNotificationPolicyAccess() || !isSystemAlertPermissionGranted(this)) {
             val intent = Intent(this, PermissionActivity::class.java)
@@ -80,17 +76,18 @@ open class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkIfrunningAfterBoot() : Boolean {
-        val sharedPreferences: SharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+    private fun checkIfrunningAfterBoot(): Boolean {
+        val sharedPreferences: SharedPreferences =
+            getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         //if (sharedPreferences.contains(NAME)) {
-            val d = sharedPreferences.getString(NAME, "")
-            if (d.equals("on")) {
-                val mfloat = Intent(this, MyAssistiveTouchService::class.java)
-                startService(mfloat)
-            } else if (isSystemNotificationPolicyAccess() && isSystemAlertPermissionGranted(this)) {
-                val intent = Intent(this, DialogActivity::class.java)
-                startActivity(intent)
-            }
+        val d = sharedPreferences.getString(NAME, "")
+        if (d.equals("on")) {
+            val mfloat = Intent(this, MyAssistiveTouchService::class.java)
+            startService(mfloat)
+        } else if (isSystemNotificationPolicyAccess() && isSystemAlertPermissionGranted(this)) {
+            val intent = Intent(this, DialogActivity::class.java)
+            startActivity(intent)
+        }
         //}
         return false
     }
@@ -111,7 +108,11 @@ open class MainActivity : AppCompatActivity() {
         //if (isBatteryOptimized() && VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP_MR1) {
         if (checkBatteryOptimized()) {
             val name = resources.getString(R.string.app_name)
-            Toast.makeText(applicationContext, "Battery optimization -> All apps -> $name -> Don't optimize", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                applicationContext,
+                "Battery optimization -> All apps -> $name -> Don't optimize",
+                Toast.LENGTH_LONG
+            ).show()
             val intent = Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS)
             startActivity(intent)
         }

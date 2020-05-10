@@ -14,15 +14,12 @@ import java.util.*
  * @author MEHDIMYADI
  **/
 
-internal class EventsAdapter(
-    private val allEvents: ArrayList<String>
-) :
+internal class EventsAdapter(private val allEvents: ArrayList<String>) :
     RecyclerView.Adapter<MyViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_textview, parent, false)
-        return MyViewHolder(v)
-    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MyViewHolder(
+        LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_textview, parent, false)
+    )
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.event.text = allEvents[position]
@@ -34,12 +31,10 @@ internal class EventsAdapter(
         //});
     }
 
-    override fun getItemCount(): Int {
-        return allEvents.size
-    }
+    override fun getItemCount() = allEvents.size
 
-    internal class MyViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    internal class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         var event: TextView = itemView.findViewById(R.id.events)
 
         init {
@@ -49,5 +44,4 @@ internal class EventsAdapter(
             )
         }
     }
-
 }

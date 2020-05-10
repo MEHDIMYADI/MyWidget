@@ -8,28 +8,14 @@ import android.view.WindowManager
  * @author MEHDIMYADI
  **/
 
-class Initializer  // the x and y coordinates of the mtouch should be traced here.... so as to share with the whole app
-//    and to capitalize on that when is needed to update the view, since once the view is update the
-//    x and y coordinates are reset and the param.x and param.y in motion touch are neglected.
-//    hence the change in param. and param.y should happen here
-{
-    private var xCoordinate = 0
-    private var yCoordinate = 0
-    fun getXCoordinate(): Int {
-        return xCoordinate
-    }
+class Initializer {
+// the x and y coordinates of the mtouch should be traced here.... so as to share with the whole app
+// and to capitalize on that when is needed to update the view, since once the view is update the
+// x and y coordinates are reset and the param.x and param.y in motion touch are neglected.
+// hence the change in param. and param.y should happen here
 
-    fun setXCoordinate(xCoordinate: Int) {
-        this.xCoordinate = xCoordinate
-    }
-
-    fun getYCoordinate(): Int {
-        return yCoordinate
-    }
-
-    fun setYCoordinate(yCoordinate: Int) {
-        this.yCoordinate = yCoordinate
-    }
+    var xCoordinate = 0
+    var yCoordinate = 0
 
     //    try to make this go to the params innitializer
     fun wmInitializer(width: Int, height: Int): WindowManager.LayoutParams {

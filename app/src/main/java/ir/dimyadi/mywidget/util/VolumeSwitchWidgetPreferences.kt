@@ -8,8 +8,10 @@ import android.media.AudioManager
  **/
 
 object VolumeSwitchWidgetPreferences {
+
     private const val SHARED_PREF_NAME = "VolumeSwitchWidgetPreferences"
     private const val SHARED_PREF_LAST_VOLUME = "LastVolume"
+
     fun isMuted(context: Context): Boolean {
         val audioManager =
             context.getSystemService(Context.AUDIO_SERVICE) as AudioManager

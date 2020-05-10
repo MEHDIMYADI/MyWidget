@@ -38,7 +38,7 @@ class PermissionActivity : AppCompatActivity() {
         popLayoutXiaomi.visibility = View.GONE
         ringLayout.setOnClickListener { ringPermissions() }
         val tArrow: ImageView = findViewById(R.id.imageViewArrow)
-        tArrow.startAnimation(AnimationUtils.loadAnimation(this,R.anim.arrow))
+        tArrow.startAnimation(AnimationUtils.loadAnimation(this, R.anim.arrow))
         val notificationManager =
             applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -82,7 +82,10 @@ class PermissionActivity : AppCompatActivity() {
                 checkDisplayOAppsBackgroundXiaomi()
             } else {
                 val intent =
-                    Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))
+                    Intent(
+                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                        Uri.parse("package:$packageName")
+                    )
                 startActivity(intent)
                 finish()
             }
@@ -141,20 +144,20 @@ class PermissionActivity : AppCompatActivity() {
     }
 
     private fun checkDisplayOAppsBackgroundXiaomi() {
-            val intent = Intent("miui.intent.action.APP_PERM_EDITOR")
-            intent.setClassName(
-                "com.miui.securitycenter",
-                "com.miui.permcenter.permissions.PermissionsEditorActivity"
-            )
-            intent.putExtra("extra_pkgname", packageName)
-            startActivity(intent)
-            //val myAppSettings = Intent(
-            //    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-            //    Uri.parse("package:$packageName")
-            //)
-            //myAppSettings.addCategory(Intent.CATEGORY_DEFAULT)
-            //myAppSettings.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            //startActivity(myAppSettings)
+        val intent = Intent("miui.intent.action.APP_PERM_EDITOR")
+        intent.setClassName(
+            "com.miui.securitycenter",
+            "com.miui.permcenter.permissions.PermissionsEditorActivity"
+        )
+        intent.putExtra("extra_pkgname", packageName)
+        startActivity(intent)
+        //val myAppSettings = Intent(
+        //    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+        //    Uri.parse("package:$packageName")
+        //)
+        //myAppSettings.addCategory(Intent.CATEGORY_DEFAULT)
+        //myAppSettings.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        //startActivity(myAppSettings)
     }
 
     companion object {

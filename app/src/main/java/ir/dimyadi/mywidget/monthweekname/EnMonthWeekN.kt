@@ -1,6 +1,5 @@
 package ir.dimyadi.mywidget.monthweekname
 
-import io.github.persiancalendar.calendar.CivilDate
 import ir.dimyadi.mywidget.util.toCivilDate
 import java.util.*
 

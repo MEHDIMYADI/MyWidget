@@ -17,6 +17,7 @@ import ir.dimyadi.mywidget.views.CustomView;
  **/
 
 public class MyAssistiveTouch {
+
     private View popview;
     private ImageView overlayedButton;
     private RelativeLayout relativeLayout;
@@ -26,9 +27,7 @@ public class MyAssistiveTouch {
     private WindowManager windowManager;
     private CustomView customView;
 
-
-
-   public MyAssistiveTouch(View popview, RelativeLayout relativeLayout, ImageView overlayedButton, Initializer wmParams, WindowManager windowManager, Context context) {
+    public MyAssistiveTouch(View popview, RelativeLayout relativeLayout, ImageView overlayedButton, Initializer wmParams, WindowManager windowManager, Context context) {
         this.popview = popview;
         this.relativeLayout = relativeLayout;
         this.overlayedButton = overlayedButton;
@@ -43,7 +42,6 @@ public class MyAssistiveTouch {
     }
 
     public void settingButton() {
-
         /*each button with
          * its
          * functionality*/
@@ -90,16 +88,16 @@ public class MyAssistiveTouch {
         //    }
         //});
 
-   //     ImageView btnWifi = popview.findViewById(R.id.btnWifi);
-   //     btnWifi.setOnClickListener(new View.OnClickListener() {
-   //         @Override
-   //         public void onClick(View view) {
-   //             enableWiFi();
-   //             relativeLayout.removeView(popview);
-   //             relativeLayout.addView(overlayedButton);
-   //             setEnable(true);
-   //         }
-   //     });
+        //     ImageView btnWifi = popview.findViewById(R.id.btnWifi);
+        //     btnWifi.setOnClickListener(new View.OnClickListener() {
+        //         @Override
+        //         public void onClick(View view) {
+        //             enableWiFi();
+        //             relativeLayout.removeView(popview);
+        //             relativeLayout.addView(overlayedButton);
+        //             setEnable(true);
+        //         }
+        //     });
 
         ImageView btnSetting = popview.findViewById(R.id.btnSetting);
         btnSetting.setOnClickListener(new View.OnClickListener() {
@@ -116,12 +114,12 @@ public class MyAssistiveTouch {
 
     }
 
-   // private void enableWiFi() {
-   //     WifiManager wifiManager = (WifiManager) context.getApplicationContext()
-   //             .getSystemService(Context.WIFI_SERVICE);
+    // private void enableWiFi() {
+    //     WifiManager wifiManager = (WifiManager) context.getApplicationContext()
+    //             .getSystemService(Context.WIFI_SERVICE);
 
-   //     assert wifiManager != null;
-   //     boolean wifiEnabled = wifiManager.isWifiEnabled();
+    //     assert wifiManager != null;
+    //     boolean wifiEnabled = wifiManager.isWifiEnabled();
 
     //    if (wifiEnabled) {
     //        Toast.makeText(context, "Wi-Fi disabled", Toast.LENGTH_SHORT).show();
@@ -132,20 +130,20 @@ public class MyAssistiveTouch {
     //    }
     //}
 
-   // private void enableBluetooth() {
-   //     BluetoothAdapter bluetoothAdapter = getDefaultAdapter();
-   //     if (bluetoothAdapter == null) {
-   //         Toast.makeText(context.getApplicationContext(), "disabled", Toast.LENGTH_SHORT).show();
-   //     } else {
-   //         if (bluetoothAdapter.isEnabled()) {
-   //             Toast.makeText(context, "Bluetooth disable", Toast.LENGTH_SHORT).show();
-   //             bluetoothAdapter.disable();
-   //         } else {
-   //             Toast.makeText(context, "Bluetooth enaled", Toast.LENGTH_SHORT).show();
-   //             bluetoothAdapter.enable();
-   //         }
-   //     }
-   // }
+    // private void enableBluetooth() {
+    //     BluetoothAdapter bluetoothAdapter = getDefaultAdapter();
+    //     if (bluetoothAdapter == null) {
+    //         Toast.makeText(context.getApplicationContext(), "disabled", Toast.LENGTH_SHORT).show();
+    //     } else {
+    //         if (bluetoothAdapter.isEnabled()) {
+    //             Toast.makeText(context, "Bluetooth disable", Toast.LENGTH_SHORT).show();
+    //             bluetoothAdapter.disable();
+    //         } else {
+    //             Toast.makeText(context, "Bluetooth enaled", Toast.LENGTH_SHORT).show();
+    //             bluetoothAdapter.enable();
+    //         }
+    //     }
+    // }
 
     public boolean isEnable() {
         return enable;

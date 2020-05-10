@@ -57,13 +57,13 @@ class DialogActivity : AppCompatActivity() {
     private var civilDay = civilDate.dayOfMonth
     private val today: String = "$civilYear/$civilMonth/$civilDay"
 
-    private val persianDate = PersianDate(CivilDate(civilYear,civilMonth,civilDay))
+    private val persianDate = PersianDate(CivilDate(civilYear, civilMonth, civilDay))
     private val yearSH: Int = persianDate.year
     private val monthSH: Int = persianDate.month
     private val dayOfMonthSH: Int = persianDate.dayOfMonth
     private val todaySH: String = "$yearSH/$monthSH/$dayOfMonthSH"
 
-    private val islamicDate = IslamicDate(CivilDate(civilYear,civilMonth,civilDay))
+    private val islamicDate = IslamicDate(CivilDate(civilYear, civilMonth, civilDay))
     private val yearH: Int = islamicDate.year
     private val monthH: Int = islamicDate.month
     private val dayOfMonthH: Int = islamicDate.dayOfMonth
@@ -91,7 +91,7 @@ class DialogActivity : AppCompatActivity() {
     private fun showAnimation() {
         Handler().postDelayed({
             val exitButton = findViewById<Button>(R.id.exit)
-            exitButton.startAnimation(AnimationUtils.loadAnimation(this,R.anim.slide_in_up))
+            exitButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.slide_in_up))
         }, 5000)
     }
 
@@ -131,27 +131,38 @@ class DialogActivity : AppCompatActivity() {
 
         //
         val persianCalendar = findViewById<TextView>(R.id.persianCalendar)
-        persianCalendar.text =  FaNumber.convert(todaySH) + "\n" + today + "\n" + FaNumber.convert(todayH)
-        TextViewCompat.setAutoSizeTextTypeWithDefaults(persianCalendar,
-            TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM)
+        persianCalendar.text =
+            FaNumber.convert(todaySH) + "\n" + today + "\n" + FaNumber.convert(todayH)
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(
+            persianCalendar,
+            TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
+        )
 
         //
         val persianMonthName = findViewById<TextView>(R.id.persianMonthName)
-        persianMonthName.text =  shCalendar.monthName + "\n" + gCalendar.monthName + "\n" + hCalendar.monthName
-        TextViewCompat.setAutoSizeTextTypeWithDefaults(persianMonthName,
-            TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM)
+        persianMonthName.text =
+            shCalendar.monthName + "\n" + gCalendar.monthName + "\n" + hCalendar.monthName
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(
+            persianMonthName,
+            TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
+        )
 
         //
         val persianWeekName = findViewById<TextView>(R.id.persianWeekName)
-        persianWeekName.text =  shCalendar.weekName + "\n" + gCalendar.weekName + "\n" + hCalendar.weekName
-        TextViewCompat.setAutoSizeTextTypeWithDefaults(persianWeekName,
-            TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM)
+        persianWeekName.text =
+            shCalendar.weekName + "\n" + gCalendar.weekName + "\n" + hCalendar.weekName
+        TextViewCompat.setAutoSizeTextTypeWithDefaults(
+            persianWeekName,
+            TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
+        )
 
         val yAstronomic = findViewById<LinearLayout>(R.id.onYAstronomic)
         yAstronomic.setOnClickListener {
             val snack = Snackbar.make(
                 findViewById(R.id.mainLayout),
-                getString(R.string.year) + " " + getString(YEARS_NAME.getOrNull(yearSH % 12) ?: R.string.empty),
+                getString(R.string.year) + " " + getString(
+                    YEARS_NAME.getOrNull(yearSH % 12) ?: R.string.empty
+                ),
                 Snackbar.LENGTH_LONG
             )
             val view = snack.view
@@ -167,7 +178,9 @@ class DialogActivity : AppCompatActivity() {
         mAstronomic.setOnClickListener {
             val snack = Snackbar.make(
                 findViewById(R.id.mainLayout),
-                getString(R.string.zodiac) + " " + getString(ZODIAC_MONTHS.getOrNull(monthSH) ?: R.string.empty)
+                getString(R.string.zodiac) + " " + getString(
+                    ZODIAC_MONTHS.getOrNull(monthSH) ?: R.string.empty
+                )
                         + " " + getString(ZODIAC_MONTHS_EMOJI.getOrNull(monthSH) ?: R.string.empty),
                 Snackbar.LENGTH_LONG
             )
@@ -175,7 +188,8 @@ class DialogActivity : AppCompatActivity() {
             val tv =
                 view.findViewById<View>(snackbar_text) as TextView
             tv.setTextColor(ContextCompat.getColor(this, android.R.color.white))
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) tv.textAlignment = TEXT_ALIGNMENT_CENTER else tv.gravity = CENTER_HORIZONTAL
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) tv.textAlignment =
+                TEXT_ALIGNMENT_CENTER else tv.gravity = CENTER_HORIZONTAL
             snack.show()
         }
     }
@@ -289,7 +303,11 @@ class DialogActivity : AppCompatActivity() {
                 finish()
             }
             AudioManager.RINGER_MODE_VIBRATE -> {
-                audioManager.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_UNMUTE, 0)
+                audioManager.adjustStreamVolume(
+                    AudioManager.STREAM_RING,
+                    AudioManager.ADJUST_UNMUTE,
+                    0
+                )
                 audioManager.ringerMode = AudioManager.RINGER_MODE_NORMAL
                 tRingMute()
                 finish()
@@ -334,7 +352,11 @@ class DialogActivity : AppCompatActivity() {
         val audioManager =
             getSystemService(Context.AUDIO_SERVICE) as AudioManager
         //audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND)
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + 1, 0)
+        audioManager.setStreamVolume(
+            AudioManager.STREAM_MUSIC,
+            audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + 1,
+            0
+        )
         tVolPercent()
     }
 
@@ -342,7 +364,11 @@ class DialogActivity : AppCompatActivity() {
         val audioManager =
             getSystemService(Context.AUDIO_SERVICE) as AudioManager
         //audioManager.adjustVolume(AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND)
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) - 1, 0)
+        audioManager.setStreamVolume(
+            AudioManager.STREAM_MUSIC,
+            audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) - 1,
+            0
+        )
         tVolPercent()
     }
 
@@ -360,7 +386,8 @@ class DialogActivity : AppCompatActivity() {
                 finish()
             }
         } catch (e: Exception) {
-            Toast.makeText(this, getString(R.string.not_compatible_device), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.not_compatible_device), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
@@ -399,7 +426,8 @@ class DialogActivity : AppCompatActivity() {
                 }
             }
         } catch (e: Exception) {
-            Toast.makeText(this, getString(R.string.not_compatible_device), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.not_compatible_device), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
@@ -417,30 +445,40 @@ class DialogActivity : AppCompatActivity() {
         val iRingMute: Button = findViewById(R.id.muteRing)
         when (RingVolumeSwitchWidgetPreferences.getRingerMode(this)) {
             AudioManager.RINGER_MODE_NORMAL -> {
-                iRingMute.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_notifications_active,0)
+                iRingMute.setCompoundDrawablesWithIntrinsicBounds(
+                    0,
+                    0,
+                    R.drawable.ic_notifications_active,
+                    0
+                )
             }
             AudioManager.RINGER_MODE_VIBRATE -> {
-                iRingMute.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vibration,0)
+                iRingMute.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_vibration, 0)
             }
             AudioManager.RINGER_MODE_SILENT -> {
-                iRingMute.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_notifications_off,0)
+                iRingMute.setCompoundDrawablesWithIntrinsicBounds(
+                    0,
+                    0,
+                    R.drawable.ic_notifications_off,
+                    0
+                )
             }
         }
     }
 
     private fun tMusicMute() {
         val iMuteVol: Button = findViewById(R.id.muteVol)
-        if(VolumeSwitchWidgetPreferences.isMuted(this)){
-            iMuteVol.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_volume_off,0)
+        if (VolumeSwitchWidgetPreferences.isMuted(this)) {
+            iMuteVol.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_volume_off, 0)
         } else {
-            iMuteVol.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_volume_up,0)
+            iMuteVol.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_volume_up, 0)
         }
     }
 
     private fun tVolPercent() {
         Handler().postDelayed({
             val tVolPercent: TextView = findViewById(R.id.volPercent)
-            tVolPercent.startAnimation(AnimationUtils.loadAnimation(this,R.anim.fade))
+            tVolPercent.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade))
             val audioManager =
                 getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
@@ -449,8 +487,10 @@ class DialogActivity : AppCompatActivity() {
             val currentVolumePercentage: Int = 100 * currentVolume / maxVolume
 
             tVolPercent.text = FaNumber.convert("%$currentVolumePercentage")
-            TextViewCompat.setAutoSizeTextTypeWithDefaults(tVolPercent,
-                TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM)
+            TextViewCompat.setAutoSizeTextTypeWithDefaults(
+                tVolPercent,
+                TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
+            )
         }, 100)
     }
 

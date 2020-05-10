@@ -1,6 +1,5 @@
 package ir.dimyadi.mywidget.monthweekname
 
-import io.github.persiancalendar.calendar.CivilDate
 import io.github.persiancalendar.calendar.IslamicDate
 import ir.dimyadi.mywidget.util.toCivilDate
 import java.util.*
@@ -15,8 +14,8 @@ class IslamicMonthWeekN {
     private var hWeekName = ""
 
     private val monthNamesList = listOf(
-        "", "مُحَرَّم", "صَفَر", "ربيع الأول", "ربیع الثاني", "جمادى الأولى", "جمادی الثانية", "رجب",
-        "شعبان", "رمضان", "شوال", "ذو القعده", "ذو الحجهه"
+        "", "مُحَرَّم", "صَفَر", "ربيع الأول", "ربیع الثاني", "جمادى الأولى", "جمادی الثانية",
+        "رجب", "شعبان", "رمضان", "شوال", "ذو القعده", "ذو الحجهه"
     )
 
     private val weekDaysList = listOf(

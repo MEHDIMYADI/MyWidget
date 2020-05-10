@@ -8,6 +8,7 @@ import android.media.AudioManager
  **/
 
 object RingVolumeSwitchWidgetPreferences {
+
     private const val SHARED_PREF_NAME = "RingSwitchWidgetPreferences"
     private const val SHARED_PREF_LAST_VOLUME = "LastVolume"
     private const val SHARED_PREF_CONFIGURED = "Configured"

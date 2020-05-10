@@ -50,7 +50,8 @@ object Util {
      * after reboot or boot
      * and restart it if it was enabled */
     private fun checkIfRunningAfterBoot(context: Context) {
-        val sharedPreferences: SharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         if (sharedPreferences.contains(NAME)) {
             val d = sharedPreferences.getString(NAME, "")
             if (d!!.contains("on")) {
