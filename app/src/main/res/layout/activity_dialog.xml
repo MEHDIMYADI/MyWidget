@@ -30,7 +30,6 @@
             tools:ignore="UselessParent">
 
             <Button
-                android:visibility="gone"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_margin="@dimen/margin"
@@ -53,7 +52,6 @@
                 android:textStyle="bold" />
 
             <Button
-                android:visibility="gone"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_margin="@dimen/margin"

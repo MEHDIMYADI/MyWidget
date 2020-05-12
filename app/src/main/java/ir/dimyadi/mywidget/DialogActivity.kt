@@ -1,6 +1,5 @@
 package ir.dimyadi.mywidget
 
-import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -30,47 +29,16 @@ import io.github.persiancalendar.calendar.IslamicDate
 import io.github.persiancalendar.calendar.PersianDate
 import ir.dimyadi.mywidget.events.EventsAdapter
 import ir.dimyadi.mywidget.events.SimpleDividerItemDecoration
-import ir.dimyadi.mywidget.monthweekname.EnMonthWeekN
-import ir.dimyadi.mywidget.monthweekname.IslamicMonthWeekN
-import ir.dimyadi.mywidget.monthweekname.PersianMonthWeekN
 import ir.dimyadi.mywidget.util.*
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.IOException
-import java.nio.charset.StandardCharsets
 import java.util.*
 
 /**
  * @author MEHDIMYADI
  **/
 
-@SuppressLint("SimpleDateFormat")
 class DialogActivity : AppCompatActivity() {
-
-    private val gCalendar = EnMonthWeekN()
-    private val shCalendar =
-        PersianMonthWeekN()
-    private val hCalendar = IslamicMonthWeekN()
-
-    private val civilDate = Calendar.getInstance().toCivilDate()
-    private var civilYear = civilDate.year
-    private var civilMonth = civilDate.month
-    private var civilDay = civilDate.dayOfMonth
-    private val today: String = "$civilYear/$civilMonth/$civilDay"
-
-    private val persianDate = PersianDate(CivilDate(civilYear, civilMonth, civilDay))
-    private val yearSH: Int = persianDate.year
-    private val monthSH: Int = persianDate.month
-    private val dayOfMonthSH: Int = persianDate.dayOfMonth
-    private val todaySH: String = "$yearSH/$monthSH/$dayOfMonthSH"
-
-    private val islamicDate = IslamicDate(CivilDate(civilYear, civilMonth, civilDay))
-    private val yearH: Int = islamicDate.year
-    private val monthH: Int = islamicDate.month
-    private val dayOfMonthH: Int = islamicDate.dayOfMonth
-    private val todayH: String = "$yearH/$monthH/$dayOfMonthH"
-
-    private var titleNames = ArrayList<String>()
 
     //val duration = 10
     //val pixelsToMove = 1
@@ -82,7 +50,6 @@ class DialogActivity : AppCompatActivity() {
         showAnimation()
 
         showCalendar()
-        showEvent()
 
         tRingMute()
         tMusicMute()
@@ -96,7 +63,35 @@ class DialogActivity : AppCompatActivity() {
         }, 5000)
     }
 
-    @SuppressLint("SimpleDateFormat", "SetTextI18n")
+    private var dayOffset = 0
+
+    private val monthNamesList = listOf(
+        "", "January", "February", "March", "April", "May", "June", "July", "August",
+        "September", "October", "November", "December"
+    )
+
+    private val weekDaysList = listOf(
+        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+    )
+
+    private val monthNamesListSH = listOf(
+        "", "فروردين", "ارديبهشت", "خرداد", "تير", "مرداد", "شهريور", "مهر", "آبان", "آذر",
+        "دي", "بهمن", "اسفند"
+    )
+
+    private val weekDaysListSH = listOf(
+        "يکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه"
+    )
+
+    private val monthNamesListH = listOf(
+        "", "مُحَرَّم", "صَفَر", "ربيع الأول", "ربیع الثاني", "جمادى الأولى", "جمادی الثانية",
+        "رجب", "شعبان", "رمضان", "شوال", "ذو القعده", "ذو الحجهه"
+    )
+
+    private val weekDaysListH = listOf(
+        "الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "جمعه", "السبت"
+    )
+
     private fun showCalendar() {
         //val pCalendar = SolarCalendar()
 
@@ -129,11 +124,37 @@ class DialogActivity : AppCompatActivity() {
         //    persianDate.month
         //)
 
+        val jdn = Calendar.getInstance().toCivilDate().toJdn() + dayOffset
+        val weekOfDay = ((jdn + 1) % 7).toInt()
+
+        val civilDate = CivilDate(jdn)
+        val civilYear = civilDate.year
+        val civilMonth = civilDate.month
+        val civilDay = civilDate.dayOfMonth
+        val today = "$civilYear/$civilMonth/$civilDay"
+        val gMonthName = monthNamesList[civilDate.month]
+        val gWeekName = weekDaysList[weekOfDay]
+
+        val persianDate = PersianDate(jdn)
+        val yearSH = persianDate.year
+        val monthSH = persianDate.month
+        val dayOfMonthSH = persianDate.dayOfMonth
+        val todaySH = "$yearSH/$monthSH/$dayOfMonthSH"
+        val shMonthName = monthNamesListSH[persianDate.month]
+        val shWeekName = weekDaysListSH[weekOfDay]
+
+        val islamicDate = IslamicDate(jdn)
+        val yearH = islamicDate.year
+        val monthH = islamicDate.month
+        val dayOfMonthH = islamicDate.dayOfMonth
+        val todayH = "$yearH/$monthH/$dayOfMonthH"
+        val hMonthName = monthNamesListH[islamicDate.month]
+        val hWeekName = weekDaysListH[weekOfDay]
 
         //
         val persianCalendar = findViewById<TextView>(R.id.persianCalendar)
         persianCalendar.text =
-            FaNumber.convert(todaySH) + "\n" + today + "\n" + FaNumber.convert(todayH)
+            listOf(FaNumber.convert(todaySH), today, FaNumber.convert(todayH)).joinToString("\n")
         TextViewCompat.setAutoSizeTextTypeWithDefaults(
             persianCalendar,
             TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
@@ -141,8 +162,7 @@ class DialogActivity : AppCompatActivity() {
 
         //
         val persianMonthName = findViewById<TextView>(R.id.persianMonthName)
-        persianMonthName.text =
-            shCalendar.monthName + "\n" + gCalendar.monthName + "\n" + hCalendar.monthName
+        persianMonthName.text = listOf(shMonthName, gMonthName, hMonthName).joinToString("\n")
         TextViewCompat.setAutoSizeTextTypeWithDefaults(
             persianMonthName,
             TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
@@ -150,8 +170,7 @@ class DialogActivity : AppCompatActivity() {
 
         //
         val persianWeekName = findViewById<TextView>(R.id.persianWeekName)
-        persianWeekName.text =
-            shCalendar.weekName + "\n" + gCalendar.weekName + "\n" + hCalendar.weekName
+        persianWeekName.text = listOf(shWeekName, gWeekName, hWeekName).joinToString("\n")
         TextViewCompat.setAutoSizeTextTypeWithDefaults(
             persianWeekName,
             TextViewCompat.AUTO_SIZE_TEXT_TYPE_UNIFORM
@@ -167,8 +186,7 @@ class DialogActivity : AppCompatActivity() {
                 Snackbar.LENGTH_LONG
             )
             val view = snack.view
-            val tv =
-                view.findViewById<View>(snackbar_text) as TextView
+            val tv = view.findViewById<View>(snackbar_text) as TextView
             tv.setTextColor(ContextCompat.getColor(this, android.R.color.white))
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) tv.textAlignment =
                 TEXT_ALIGNMENT_CENTER else tv.gravity = CENTER_HORIZONTAL
@@ -193,13 +211,12 @@ class DialogActivity : AppCompatActivity() {
                 TEXT_ALIGNMENT_CENTER else tv.gravity = CENTER_HORIZONTAL
             snack.show()
         }
-    }
 
-    private fun showEvent() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         val linearLayoutManager = LinearLayoutManager(applicationContext)
         recyclerView.layoutManager = linearLayoutManager
 
+        val titleNames = ArrayList<String>()
         try {
             val obj = JSONObject(readRawResource(R.raw.events))
             val iranArray = obj.getJSONArray("Persian Calendar")
@@ -224,10 +241,6 @@ class DialogActivity : AppCompatActivity() {
                 }
             }
 
-            // old Method
-            //val mDay = SimpleDateFormat("d")
-            //val mMonth = SimpleDateFormat("M")
-            //mDay.format(Date())
             val gregorianArray = obj.getJSONArray("Gregorian Calendar")
             for (i in 0 until gregorianArray.length()) {
                 val userDetail = gregorianArray.getJSONObject(i)
@@ -238,9 +251,7 @@ class DialogActivity : AppCompatActivity() {
         } catch (e: JSONException) {
             e.printStackTrace()
         }
-        val eventsAdapter = EventsAdapter(
-            titleNames
-        )
+        val eventsAdapter = EventsAdapter(titleNames)
 
         if (titleNames.isEmpty()) {
             titleNames.add(getString(R.string.no_event))
@@ -281,9 +292,13 @@ class DialogActivity : AppCompatActivity() {
     }
 
     fun nextDay(view: View) {
+        dayOffset++
+        showCalendar()
     }
 
     fun previewDay(view: View) {
+        dayOffset--
+        showCalendar()
     }
 
     //fun onMusicVolPanel(view: View) {
